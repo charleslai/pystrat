@@ -25,7 +25,7 @@ get_all(symbol)
 
 
 """
-def __fetch(symbol, parameter):
+def _fetch(symbol, parameter):
     """
     Returns: List of values parsed from the Yahoo finance csv object.
 
@@ -53,7 +53,7 @@ def get_all(symbol):
     or 'dividend_yield'. A full list of fetched information can be gleaned
     from the following source code. 
     """
-    values = __fetch(symbol, 'snxopl1c1ghva2j1dyjkm3m4erj4').split(',')
+    values = _fetch(symbol, 'snxopl1c1ghva2j1dyjkm3m4erj4').split(',')
     stock_data = {}
     stock_data['symbol'] =                        values[0]
     stock_data['name'] =                          values[1]
@@ -79,7 +79,7 @@ def get_all(symbol):
     return stock_data
 
 #=========================================================================
-#                       Historical Price Function
+#                       Historical Price Functions
 #=========================================================================
 def get_historical_prices(symbol, start_date, end_date):
     """
@@ -101,6 +101,13 @@ def get_historical_prices(symbol, start_date, end_date):
     data = [day[:-2].split(',') for day in days]
     return data 
 
+def get_historical_ma(symbol, amt, start_date, end_date):
+    """
+    Returns: A list of histroical moving averages for a given
+    ticker symbol, start date, end date, and moving average amount.
+    """
+    date_offset = amt
+    pass
 #=========================================================================
 #                   Individual Data Mining Functions
 #=========================================================================
@@ -112,7 +119,7 @@ def get_symbol(symbol):
     (Kind of redundant but here in order for the Yahoo Finance API to be
     fairly complete)
     """
-    return __fetch(symbol, 's')
+    return _fetch(symbol, 's')
 
 
 def get_name(symbol):
@@ -120,7 +127,7 @@ def get_name(symbol):
     Returns: A one-dimensional list containing the string representation
     of the name for a given security.
     """
-    return __fetch(symbol, 'n')
+    return _fetch(symbol, 'n')
 
 
 def get_open(symbol):
@@ -128,87 +135,87 @@ def get_open(symbol):
     Returns: A one-dimensional list containing the string representation
     of the opening price for a given security.
     """
-    return __fetch(symbol, 'o')
+    return _fetch(symbol, 'o')
     
 
 def get_prev_close(symbol):
-    return __fetch(symbol, 'p')
+    return _fetch(symbol, 'p')
 
 def get_price(symbol): 
-    return __fetch(symbol, 'l1')
+    return _fetch(symbol, 'l1')
 
 
 def get_change(symbol):
-    return __fetch(symbol, 'c1')
+    return _fetch(symbol, 'c1')
     
     
 def get_volume(symbol): 
-    return __fetch(symbol, 'v')
+    return _fetch(symbol, 'v')
 
 
 def get_avg_daily_volume(symbol): 
-    return __fetch(symbol, 'a2')
+    return _fetch(symbol, 'a2')
     
     
 def get_stock_exchange(symbol): 
-    return __fetch(symbol, 'x')
+    return _fetch(symbol, 'x')
     
     
 def get_market_cap(symbol):
-    return __fetch(symbol, 'j1')
+    return _fetch(symbol, 'j1')
    
    
 def get_book_value(symbol):
-    return __fetch(symbol, 'b4')
+    return _fetch(symbol, 'b4')
 
 
 def get_ebitda(symbol): 
-    return __fetch(symbol, 'j4')
+    return _fetch(symbol, 'j4')
     
     
 def get_dividend_per_share(symbol):
-    return __fetch(symbol, 'd')
+    return _fetch(symbol, 'd')
 
 
 def get_dividend_yield(symbol): 
-    return __fetch(symbol, 'y')
+    return _fetch(symbol, 'y')
     
     
 def get_earnings_per_share(symbol): 
-    return __fetch(symbol, 'e')
+    return _fetch(symbol, 'e')
 
 
 def get_52_week_high(symbol): 
-    return __fetch(symbol, 'k')
+    return _fetch(symbol, 'k')
     
     
 def get_52_week_low(symbol): 
-    return __fetch(symbol, 'j')
+    return _fetch(symbol, 'j')
 
 
 def get_50day_moving_avg(symbol): 
-    return __fetch(symbol, 'm3')
+    return _fetch(symbol, 'm3')
     
     
 def get_200day_moving_avg(symbol): 
-    return __fetch(symbol, 'm4')
+    return _fetch(symbol, 'm4')
     
     
 def get_price_earnings_ratio(symbol): 
-    return __fetch(symbol, 'r')
+    return _fetch(symbol, 'r')
 
 
 def get_price_earnings_growth_ratio(symbol): 
-    return __fetch(symbol, 'r5')
+    return _fetch(symbol, 'r5')
 
 
 def get_price_sales_ratio(symbol): 
-    return __fetch(symbol, 'p5')
+    return _fetch(symbol, 'p5')
     
     
 def get_price_book_ratio(symbol): 
-    return __fetch(symbol, 'p6')
+    return _fetch(symbol, 'p6')
        
        
 def get_short_ratio(symbol): 
-    return __fetch(symbol, 's7')
+    return _fetch(symbol, 's7')
